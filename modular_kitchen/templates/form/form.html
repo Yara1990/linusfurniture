@@ -121,7 +121,179 @@
 </form>
 
 <script type="application/javascript">
-    $('#myWizard').easyWizard();
+
+ $('#myWizard').easyWizard({
+    buttonsClass: 'btn',
+    submitButtonClass: 'btn btn-info',
+    before: function(wizardObj, currentStepObj, nextStepObj) {
+{#        alert('Hello, I\'am the before callback');#}
+    },
+    after: function(wizardObj, prevStepObj, currentStepObj) {
+{#        alert('Hello, I\'am the after callback');#}
+    },
+    beforeSubmit: function(wizardObj) {
+         var cabinetWidth = parseInt(document.getElementById("cabinetWidth").value);
+         var cabinetDepth = parseInt(document.getElementById("cabinetDepth").value);
+         var cabinetHeight = parseInt(document.getElementById("cabinetHeight").value);
+         var cabinetCount = parseInt(document.getElementById("cabinetCount").value);
+         var shelvesCount_wood = parseInt(document.getElementById("shelvesCount_wood").value);
+         var shelvesCount_glass = parseInt(document.getElementById("shelvesCount_glass").value);
+         var shutterType = parseInt(document.getElementById("shutterType").value);
+         var shutterWidth = parseInt(document.getElementById("shutterWidth").value);
+         var shutterHeight = parseInt(document.getElementById("shutterHeight").value);
+         var shutterCount = parseInt(document.getElementById("shutterCount").value);
+         var corniceWidth = parseInt(document.getElementById("corniceWidth").value);
+         var corniceHeight = parseInt(document.getElementById("corniceHeight").value);
+         var corniceCount = parseInt(document.getElementById("corniceCount").value);
+         var pelmetWidth = parseInt(document.getElementById("pelmetWidth").value);
+         var pelmetHeight = parseInt(document.getElementById("pelmetHeight").value);
+         var pelmetCount = parseInt(document.getElementById("pelmetCount").value);
+
+         var amountCabinet = ((cabinetDepth*cabinetHeight/92903.04*2)+((cabinetWidth)*(cabinetDepth)/92903.04*2)+((cabinetWidth)*(cabinetHeight)/92903.04))*cabinetCount*250;
+         var amountShelf_wood = (cabinetWidth)*(cabinetDepth)/92903.04*shelvesCount_wood*250;
+         var amountSlelf_glass= (cabinetWidth)*(cabinetDepth)/92903.04*shelvesCount_glass*300;
+
+         var m_lam = shutterWidth*shutterHeight/92903.04*shutterCount*500;
+         var g_lam = shutterWidth*shutterHeight/92903.04*shutterCount*550;
+         var diglam = shutterWidth*shutterHeight/92903.04*shutterCount*600;
+         var bpa = shutterWidth*shutterHeight/92903.04*shutterCount*1100;
+         var bpg = shutterWidth*shutterHeight/92903.04*shutterCount*1200;
+         var pu = shutterWidth*shutterHeight/92903.04*shutterCount*1500;
+
+         var g_45 =(((shutterWidth*2)+(shutterHeight*2))/300)*399;
+         var g_19 =(((shutterWidth*2)+(shutterHeight*2))/300)*399;
+         var stickon =(((shutterWidth*2)+(shutterHeight*2))/300)*334;
+         var mode =(((shutterWidth*2)+(shutterHeight*2))/300)*456;
+         var curve_45 =(((shutterWidth*2)+(shutterHeight*2))/300)*500;
+
+         var amountCornice =corniceWidth*corniceHeight/92903.04*corniceCount*400;
+         var amountPelmet =pelmetWidth*pelmetHeight/92903.04*pelmetCount*400;
+
+         var amountHardware = (cabinetCount * 80) + (cabinetCount * 64) + (cabinetCount * 48) + (shelvesCount_wood * 40) + ((shelvesCount_glass * 80) + (cabinetCount * 180) + (250) + (200 * shutterCount);
+
+         var amountFitting = cabinetWidth*cabinetHeight/92903.04*150;
+
+         var amountHings_wood_re = shutterCount*64;
+         var amountHings_glass_re = shutterCount*462;
+         var amountHings_wood_ss = shutterCount*444;
+         var amountHings_glass_ss = shutterCount*496;
+
+        var total_mlam_re;
+        var total_gllam_re;
+        var total_digilam_re;
+        var total_bpa_re;
+        var total_bpg_re;
+        var total_pu_re;
+        var total_mlam_ss;
+        var total_gllam_ss;
+        var total_digilam_ss;
+        var total_bpa_ss;
+        var total_bpg_ss;
+        var total_pu_ss;
+        var gst_mlam_re;
+        var total_mlam_re_gst;
+        var gst_gllam_re;
+        var total_gllam_re_gst;
+        var gst_digilam_re;
+        var total_digilam_re_gst;
+        var gst_bpa_re;
+        var total_bpa_re_gst;
+        var gst_bpg_re;
+        var total_bpg_re_gst;
+        var gst_pu_re;
+        var total_pu_re_gst;
+        var gst_mlam_ss;
+        var total_mlam_ss_gst;
+        var gst_gllam_ss;
+        var total_gllam_ss_gst;
+        var gst_digilam_ss;
+        var total_digilam_ss_gst;
+        var gst_bpa_ss;
+        var total_bpa_ss_gst;
+        var gst_bpg_ss;
+        var total_bpg_ss_gst;
+        var gst_pu_ss;
+        var total_pu_ss_gst;
+        if (shutterType == "Wood") {
+            total_mlam_re = (amountCabinet + amountShelf_wood + amountSlelf_glass + m_lam + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_wood_re);
+            total_gllam_re = (amountCabinet + amountShelf_wood + amountSlelf_glass + g_lam + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_wood_re);
+            total_digilam_re = (amountCabinet + amountShelf_wood + amountSlelf_glass + diglam + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_wood_re);
+            total_bpa_re = (amountCabinet + amountShelf_wood + amountSlelf_glass + bpa + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_wood_re);
+            total_bpg_re = (amountCabinet + amountShelf_wood + amountSlelf_glass + bpg + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_wood_re);
+            total_pu_re = (amountCabinet + amountShelf_wood + amountSlelf_glass + pu + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_wood_re);
+
+
+            total_mlam_ss = (amountCabinet + amountShelf_wood + amountSlelf_glass + m_lam + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_wood_ss);
+            total_gllam_ss = (amountCabinet + amountShelf_wood + amountSlelf_glass + g_lam + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_wood_ss);
+            total_digilam_ss = (amountCabinet + amountShelf_wood + amountSlelf_glass + diglam + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_wood_ss);
+            total_bpa_ss = (amountCabinet + amountShelf_wood + amountSlelf_glass + bpa + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_wood_ss);
+            total_bpg_ss = (amountCabinet + amountShelf_wood + amountSlelf_glass + bpg + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_wood_ss);
+            total_pu_ss = (amountCabinet + amountShelf_wood + amountSlelf_glass + pu + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_wood_ss);
+
+
+        } else if (shutterType == "Glass") {
+            total_mlam_re = (amountCabinet + amountShelf_wood + amountSlelf_glass + m_lam + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_glass_re);
+            total_gllam_re = (amountCabinet + amountShelf_wood + amountSlelf_glass + g_lam + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_glass_re);
+            total_digilam_re = (amountCabinet + amountShelf_wood + amountSlelf_glass + diglam + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_glass_re);
+            total_bpa_re = (amountCabinet + amountShelf_wood + amountSlelf_glass + bpg + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_glass_re);
+            total_bpg_re = (amountCabinet + amountShelf_wood + amountSlelf_glass + bpa + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_glass_re);
+            total_pu_re = (amountCabinet + amountShelf_wood + amountSlelf_glass + pu + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_glass_re);
+
+            total_mlam_ss = (amountCabinet + amountShelf_wood + amountSlelf_glass + m_lam + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_glass_ss);
+            total_gllam_ss = (amountCabinet + amountShelf_wood + amountSlelf_glass + g_lam + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_glass_ss);
+            total_digilam_ss = (amountCabinet + amountShelf_wood + amountSlelf_glass + diglam + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_glass_ss);
+            total_bpa_ss = (amountCabinet + amountShelf_wood + amountSlelf_glass + bpg + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_glass_ss);
+            total_bpg_ss = (amountCabinet + amountShelf_wood + amountSlelf_glass + bpa + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_glass_ss);
+            total_pu_ss = (amountCabinet + amountShelf_wood + amountSlelf_glass + pu + curve_45 + amountCornice + amountPelmet + amountHardware + amountFitting + amountHings_glass_ss);
+
+        }
+
+            gst_mlam_re = (total_mlam_re * 28) / 100;
+            total_mlam_re_gst = total_mlam_re + gst_mlam_re;
+
+            gst_gllam_re = (total_mlam_re * 28) / 100;
+            total_gllam_re_gst = total_gllam_re + gst_gllam_re;
+
+            gst_digilam_re = (total_digilam_re * 28) / 100;
+            total_digilam_re_gst = total_digilam_re + gst_digilam_re;
+
+            gst_bpa_re = (total_bpa_re * 28) / 100;
+            total_bpa_re_gst = total_bpa_re + gst_bpa_re;
+
+            gst_bpg_re = (total_bpg_re * 28) / 100;
+            total_bpg_re_gst = total_bpg_re + gst_bpg_re;
+
+            gst_pu_re = (total_pu_re * 28) / 100;
+            total_pu_re_gst = total_pu_re + gst_pu_re;
+
+
+
+            gst_mlam_ss = (total_mlam_ss * 28) / 100;
+            total_mlam_ss_gst = total_mlam_ss + gst_mlam_ss;
+
+            gst_gllam_ss = (total_mlam_ss * 28) / 100;
+            total_gllam_ss_gst = total_gllam_ss + gst_gllam_ss;
+
+            gst_digilam_ss = (total_digilam_ss * 28) / 100;
+            total_digilam_ss_gst = total_digilam_ss + gst_digilam_ss;
+
+            gst_bpa_ss = (total_bpa_ss * 28) / 100;
+            total_bpa_ss_gst = total_bpa_ss + gst_bpa_ss;
+
+            gst_bpg_ss = (total_bpg_ss * 28) / 100;
+            total_bpg_ss_gst = total_bpg_ss + gst_bpg_ss;
+
+            gst_pu_ss = (total_pu_ss * 28) / 100;
+            total_pu_ss_gst = total_pu_ss + gst_pu_ss;
+
+
+        alert(total_mlam_ss_gst);
+    },
+
+
+})
+
+
 </script>
 
 <script type="text/css">
