@@ -10,41 +10,111 @@
         <script src="{% static "jquery.easyWizard-master/lib/jquery.easyWizard.js" %}"></script>
 </head>
 <body>
-
+<h1>Overhead Cabinets</h1>
 <form id="myWizard" type="get" action="" class="form-horizontal">
-	<section class="step" data-step-title="The first">
+	<section class="step" data-step-title="Dimensions of Cabin">
 		<div class="control-group">
-			<label class="control-label" for="inputEmail">Email</label>
+			<label class="control-label" for="cabinetWidth">Width</label>
 			<div class="controls">
-				<input type="text" id="inputEmail" placeholder="Email" class="input-xlarge" title="Email is required !" required >
+				<input type="number" id="cabinetWidth" placeholder="Width" class="input-xlarge" title="Width is required !" required >
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="inputPassword">Password</label>
+			<label class="control-label" for="cabinetDepth">Depth</label>
 			<div class="controls">
-				<input type="password" id="inputPassword" placeholder="Password" class="input-xlarge">
+				<input type="number" id="cabinetDepth" placeholder="Depth" class="input-xlarge">
+			</div>
+		</div>
+        <div class="control-group">
+			<label class="control-label" for="cabinetHeight">Height</label>
+			<div class="controls">
+				<input type="number" id="cabinetHeight" placeholder="Height" class="input-xlarge">
+			</div>
+		</div>
+        <div class="control-group">
+			<label class="control-label" for="cabinetCount">No of Cabinets</label>
+			<div class="controls">
+				<input type="number" id="cabinetCount" placeholder="No of Cabinets" class="input-xlarge">
+			</div>
+		</div>
+        <div class="control-group">
+			<label class="control-label" for="shelvesCount_wood">No of Wooden Shelves</label>
+			<div class="controls">
+				<input type="number" id="shelvesCount_wood" placeholder="No of Wooden Shelves" class="input-xlarge">
+			</div>
+		</div>
+        <div class="control-group">
+			<label class="control-label" for="shelvesCount_glass">No of Glass Shelves</label>
+			<div class="controls">
+				<input type="number" id="shelvesCount_glass" placeholder="No of Glass Shelves" class="input-xlarge">
 			</div>
 		</div>
 	</section>
-	<section class="step" data-step-title="The second">
+	<section class="step" data-step-title="Dimensions of Shutters">
 		<div class="control-group">
-			<label class="control-label" for="inputUsername">Username</label>
-				<div class="controls">
-				<input type="text" id="inputUsername" placeholder="Username" class="input-xlarge">
+			<label class="control-label" for="shutterType">Type of Shutter</label>
+			<div class="controls">
+                <input id="shutterType" placeholder="Type of Shutter" class="input-xlarge" list="shutterdd" name="shutterType">
+                    <datalist id="shutterdd">
+                        <option value="Glass">
+                        <option value="Wood">
+                    </datalist>
+			</div>
+		</div>
+        <div class="control-group">
+			<label class="control-label" for="shutterWidth">Width</label>
+			<div class="controls">
+				<input type="number" id="shutterWidth" placeholder="Width" class="input-xlarge" title="Width is required !" required >
+			</div>
+		</div>
+        <div class="control-group">
+			<label class="control-label" for="shutterHeight">Height</label>
+			<div class="controls">
+				<input type="number" id="shutterHeight" placeholder="Height" class="input-xlarge">
+			</div>
+		</div>
+        <div class="control-group">
+			<label class="control-label" for="shutterCount">No of Cabinets</label>
+			<div class="controls">
+				<input type="number" id="shutterCount" placeholder="No of Shutter" class="input-xlarge">
 			</div>
 		</div>
 	</section>
-	<section class="step" data-step-title="The third">
+	<section class="step" data-step-title="Dimensions of Cornice & Pelmet">
 		<div class="control-group">
-			<label class="control-label" for="inputFirstname">Firstname</label>
-				<div class="controls">
-				<input type="text" id="inputFirstname" placeholder="Firstname" class="input-xlarge">
+			<label class="control-label" for="corniceWidth">Width of Cornice</label>
+			<div class="controls">
+				<input type="number" id="corniceWidth" placeholder="Width" class="input-xlarge" title="Width is required !" required >
 			</div>
 		</div>
-		<div class="control-group">
-			<label class="control-label" for="inputCity">City</label>
-				<div class="controls">
-				<input type="text" id="inputCity" placeholder="City" class="input-xlarge">
+        <div class="control-group">
+			<label class="control-label" for="corniceHeight">Height of Cornice</label>
+			<div class="controls">
+				<input type="number" id="corniceHeight" placeholder="Height" class="input-xlarge">
+			</div>
+		</div>
+        <div class="control-group">
+			<label class="control-label" for="corniceCount">No of Cornice</label>
+			<div class="controls">
+				<input type="number" id="corniceCount" placeholder="No of Shutter" class="input-xlarge">
+			</div>
+		</div>
+        <div class="control-group">
+			<label class="control-label" for="pelmetWidth">Width of Pelmet</label>
+			<div class="controls">
+				<input type="number" id="pelmetWidth" placeholder="Width" class="input-xlarge" title="Width is required !" required >
+			</div>
+		</div>
+        <div class="control-group">
+			<label class="control-label" for="pelmetHeight">Height of Pelmet</label>
+			<div class="controls">
+				<input type="number" id="pelmetHeight" placeholder="Height" class="input-xlarge">
+			</div>
+		</div>
+        <div class="control-group">
+			<label class="control-label" for="pelmetCount">No of Pelmet</label>
+			<div class="controls">
+				<input type="number" id="pelmetCount" placeholder="No of Pelmet" class="input-xlarge">
 			</div>
 		</div>
 	</section>
